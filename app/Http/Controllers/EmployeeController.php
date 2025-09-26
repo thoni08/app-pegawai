@@ -57,7 +57,8 @@ class EmployeeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $employee = Employee::find($id); 
+        return view('employees.edit',compact('employee'));
     }
 
     /**
