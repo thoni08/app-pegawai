@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Salaries extends Model
 {
@@ -14,4 +15,9 @@ class Salaries extends Model
         'potongan',
         'total_gaji',
     ];
+
+    public function employee(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class, 'karyawan_id');
+    }
 }
