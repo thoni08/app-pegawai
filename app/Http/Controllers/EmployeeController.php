@@ -7,6 +7,7 @@ use App\Models\Department;
 use App\Models\Position;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Inertia\Inertia;
 
 class EmployeeController extends Controller
 {
@@ -39,7 +40,15 @@ class EmployeeController extends Controller
 
         $statuses = Employee::STATUS_OPTIONS;
 
-        return view('employees.index', compact('employees', 'statuses', 'search', 'status'));
+        // return view('employees.index', compact('employees', 'statuses', 'search', 'status'));
+        return Inertia::render('employees/index', [
+            'employees' => $employees,
+            'filters'   => [
+                'search' => $search,
+                'status' => $status,
+            ],
+            'statuses'  => $statuses,
+        ]);
     }
 
     /**
