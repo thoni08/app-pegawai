@@ -6,9 +6,10 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\SalariesController;
 use App\Http\Controllers\PositionController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('index', []);
 });
 
 Route::get('/dashboard', function () {
